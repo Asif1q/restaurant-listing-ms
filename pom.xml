@@ -92,6 +92,7 @@
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
+			
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
@@ -99,17 +100,24 @@
 				<executions>
 					<execution>
 						<id>prepare-agent</id>
+						<phase>test</phase> <!-- Specify phase -->
 						<goals>
 							<goal>prepare-agent</goal>
 						</goals>
 					</execution>
 					<execution>
 						<id>report</id>
+						<phase>prepare-package</phase> <!-- Specify phase -->
 						<goals>
 							<goal>report</goal>
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>4.0.0.4121</version>
 			</plugin>
 		</plugins>
 	</build>
